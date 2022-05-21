@@ -1,0 +1,133 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Carrito>
+@{
+    ViewData["Title"] = "Carrito de Compras";
+    IEnumerable<hotel_santa_ursula_II.Models.Carrito> listProformas = new List<Carrito>();
+    int total = 0;        
+    var contar = 0;
+}
+
+<head>  
+   <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>      
+</head>
+
+<body>
+    <!--Inicio Banner-->
+<div class="hero-wrap hero-wrap-2" style="background-image: url('images/banner1.jpg'); background-attachment:fixed; height: 200px;">
+      <div class="overlay" style="height: 200px;" ></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="height: 200px;">
+           <div class="col-md-8 ftco-animate text-center">          
+             <h1 class="mb-3 bread">Reservas Pendientes</h1>
+            </div>
+          </div>
+       </div>
+</div>    
+<br>
+<br>
+<!--Fin Banner-->
+<div class="alert alert-success" role="alert">@ViewData["Message"]</div>  
+<div class="container">
+    <table class="table table-hover">
+    <thead class="thead-dark">
+             <tr>
+                 <th scope="col">
+                    @Html.DisplayNameFor(model => model.habitacion.Imagen)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.habitacion.numero)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.fechar)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.C_noches)
+                </th>
+                <th scope="col" >
+                    <p>Subtotal</p>
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th scope="col" >
+                    <p></p>
+                </th>
+        </tr>
+    </thead>
+	@foreach (var item in Model)
+	{
+        //@if (item.Email == @User.Identity.Name)
+        //{
+            <tr>
+            <td>
+                <img class="img-responsive" width="200" height="150"
+                       src="@item.habitacion.Imagen" alt="@item.habitacion.Imagen"  />
+            </td>
+            <td>
+                H - @Html.DisplayFor(modelItem => item.habitacion.numero)
+            </td>
+            <td>
+                S/. @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                    <script>
+                        var f = new Date();
+                        document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                    </script>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_noches)
+            </td>
+            <td>
+                @{
+                    total = item.Precio * item.C_noches;                
+                }
+                <p>S/. @total</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-outline-success">Editar</a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Eliminar</a>  
+            </td>
+            </tr>            
+	}
+    </tbody>    
+</table>
+
+      @foreach (var item in Model){
+         <tr>
+            @{
+               total = total + item.Precio * item.Quantity;
+                
+               contar++;
+            }
+         </tr>
+      }
+@{
+        
+        int total1=0;
+        var contar1 = 0;
+      }
+      @foreach (var item in Model){
+         <tr>
+            @{
+               total1 = total1 + item.Precio * item.C_noches;
+                
+               contar1++;
+            }
+         </tr>
+      }
+
+    <!--<div class="container">
+         <h4>Total: S/ @total </h4> 
+           <h5>total @total1</h5>           
+    </div>-->
+
+    <a class="btn btn-primary button" asp-controller="Pago" asp-action="Create" asp-route-monto="@total1">Pagar</a>
+    <p align="center" style="font-size: 200%;">Total a Pagar S/. @total1</p>
+</body>
+    

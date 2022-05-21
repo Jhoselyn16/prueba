@@ -1,0 +1,94 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Devolucion>
+@{
+     var count = 1;
+}
+<head>  
+   <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>      
+</head>
+<body>
+    <!--Inicio Banner-->
+<div class="hero-wrap hero-wrap-2" style="background-image: url('../images/banner1.jpg'); background-attachment:fixed; height: 200px;">
+      <div class="overlay" style="height: 200px;" ></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="height: 200px;">
+           <div class="col-md-8 ftco-animate text-center">          
+             <h1 class="mb-3 bread">lista de devoluciones</h1>
+            </div>
+          </div>
+       </div>
+</div>    
+<br>
+<br>
+<!--Fin Banner-->
+<div class="container">
+    <p id="razonsocial"></p>
+    <br><table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                    <th scope="col">
+                        №
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.nombres)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.apellidos)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.dni)
+                    </th>                    
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.motivo)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.numero)
+                    </th>
+                     <th scope="col">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    
+                    <th></th>
+            </tr>
+        </thead>
+
+        <!-- actualizar la db para que lea las lineas de abajo -->
+            <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @count
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellidos)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.dni)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.motivo)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                               
+                
+                <th scope="row">
+                    <a asp-action="Editar" asp-route-id="@item.id" class="btn btn-outline-success" role="button">Editar</a> 
+                </th>
+            </tr>
+            count++;
+        }        
+        </tbody> 
+    </table>
+</div>
+</body>

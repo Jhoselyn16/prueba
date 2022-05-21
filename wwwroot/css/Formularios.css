@@ -1,0 +1,97 @@
+.formulario {
+    background: rgba(0, 0, 0, .1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.568);
+    color: #000000;
+}
+
+/*BOTON------------------------*/
+
+    .button {
+        min-width: 100%;
+        font-family: 'Nunito', sans-serif;
+        font-size: 100%;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        font-weight: 700;
+        color: #313133;
+        background: #ECCD6A;
+        background: linear-gradient(90deg, #ECCD6A 0%, #CDA434 100%);
+        border: none;
+        border-radius: 1000px;
+        box-shadow: 5px 5px 15px #CDA434;
+        transition: all 0.3s ease-in-out 0s;
+        cursor: pointer;
+        outline: none;
+        padding: 10px;
+        }
+      
+      button::before {
+        content: '';
+        border-radius: 1000px;
+        border: 6px solid #ECCD6A;
+        box-shadow: 0 0 60px #ECCD6A;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all .3s ease-in-out 0s;
+      }
+      
+      .button:hover, .button:focus {
+        color: #313133;
+        transform: translateY(-6px);
+      }
+      
+        
+      
+   
+    
+/*FIN BOTON------------------------*/
+
+/*-------------FORMULARIO CONTACTO------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+
+.contact_form{  
+  width: 630px; 
+  height: auto;
+  margin: 80px auto; 
+  background-color: #fbfbfb; 
+}
+
+
+textarea{
+  background-color: #fbfbfb; 
+  width: 405px; 
+  height: 150px; 
+  border-radius: 5px;   
+  margin-top: 10px;  
+  padding-left: 10px;
+  margin-bottom: 20px; 
+  padding-top: 15px; 
+}
+
+
+label{
+  display: block; 
+  float: center; 
+  color: #b8860b; 
+}
+
+
+.aviso{
+  font-size: 13px;  
+  color: #0e0e0e;  
+}
+
+p{
+  font-size: 14px; 
+  color: #b8860b; 
+}
+
+
+.formulario textarea:focus{
+  outline:0;
+}

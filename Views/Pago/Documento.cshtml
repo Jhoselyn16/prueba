@@ -1,0 +1,135 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Carrito>
+
+@{
+    ViewData["Title"] = "Documento";
+    int total = 0;        
+    var contar = 0;
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DOCUMENTO</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    
+
+    <center>
+        <div class="col-sm-4">
+            <img width="80%" src="~/images/nombre.png" />
+            <br>
+            <br>
+        </div>        
+   </center>
+
+    <div class="col-sm-8 text-center">
+            <h1>COMPROBANTE DE PAGO</h1>
+            <br>
+            <br>
+        </div>
+
+<h5> Fecha: 
+<script>
+    var f = new Date();
+    document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+</script>
+ </h5>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.habitacion.Imagen)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.habitacion.numero)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.fechar)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.C_noches)
+                </th>
+                <th scope="col" >
+                    <p>Subtotal</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+               <tr>
+            <td>
+                <img class="img-responsive" width="200" height="150"
+                       src="@item.habitacion.Imagen" alt="@item.habitacion.Imagen"  />
+            </td>
+            <td>
+                H - @Html.DisplayFor(modelItem => item.habitacion.numero)
+            </td>
+            <td>
+                S/. @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                    <script>
+                        var f = new Date();
+                        document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                    </script>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_noches)
+            </td>
+            <td>
+                @{
+                    total = item.Precio * item.C_noches;                
+                }
+                <p>S/. @total</p>
+            </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+   
+   
+      @foreach (var item in Model){
+         <tr>
+            @{
+               total = total + item.Precio*item.Quantity;
+               contar++;
+            }
+         </tr>
+      }
+
+    @{
+        
+        int total1=0;
+        var contar1 = 0;
+      }
+      @foreach (var item in Model){
+         <tr>
+            @{
+               total1 = total1 + item.Precio * item.C_noches;
+                
+               contar1++;
+            }
+         </tr>
+      }
+
+    <div class="container">
+         <p align="center" style="font-size: 200%;">Total S/. @total1</p>
+    </section>
+
+
+
+</body>
+</html>

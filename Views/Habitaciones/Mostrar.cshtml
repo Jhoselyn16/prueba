@@ -1,0 +1,62 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Habitaciones>
+
+@{
+  ViewData["Title"] = "Catalogo";
+}
+
+<head>
+  <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-------------------------------BANNER-------------------------------->
+  <div class="hero-wrap hero-wrap-2"
+    style="background-image: url('../images/banner1.jpeg'); background-attachment:fixed; height: 200px;">
+    <div class="overlay" style="height: 200px;"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true"
+        style="height: 200px;">
+        <div class="col-md-8 ftco-animate text-center">
+          <h1 class="mb-3 bread">Habitaciones Disponibles</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <!-------------------------------------------------------------------->
+
+  <div class="container">
+    <h1>@ViewData["Message"]</h1>
+    <div class="row">
+      <div class="col">
+        <div id="products" class="mb-3">
+          <div class="row">
+            @foreach (var item in Model)
+            {
+              <div class="col-sm-4">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="card-img-actions">
+                      <img class="img-responsive" width="250" height="180" src="@item.Imagen" alt="@item.Imagen" />
+                    </div>
+                  </div>
+                  
+                  <div class="card-body">
+                   
+                    
+                      <a class="btn btn-warning" 
+                    >Detalles</a>
+                    
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

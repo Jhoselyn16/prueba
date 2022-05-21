@@ -1,0 +1,42 @@
+@model hotel_santa_ursula_II.Models.Reservas
+
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+
+<h3>Editar Proforma</h3>
+<hr />
+<div class="col-lg-6" style="float:none;margin:auto;">
+    
+        <form asp-controller="Reservas" asp-action="Seleccionar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <input type="hidden" asp-for="UserID" />
+            <input type="hidden" asp-for="Precio" />
+            
+                <label asp-for="CantHuespedes" class="control-label"></label>
+                <input asp-for="CantHuespedes" class="form-control rounded-pill bg-secondary text-white" min="1" max="2" />
+                
+                <label asp-for="DiaEntrada" class="control-label"></label>
+                <input asp-for="DiaEntrada" class="form-control rounded-pill bg-secondary text-white" />
+                
+                <label asp-for="DiaSalida" class="control-label"></label>
+                <input asp-for="DiaSalida" class="form-control rounded-pill bg-secondary text-white" />
+
+                <span asp-validation-for="CantHuespedes" class="text-danger"></span>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Actualizar" class="btn rounded-pill btn-dark btn-block" />
+            </div>
+        </form>
+
+    <div>
+        <a asp-action="Index">Regresar</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

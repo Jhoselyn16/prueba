@@ -1,0 +1,24 @@
+@model hotel_santa_ursula_II.Models.Habitaciones
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+    <div class="container">
+            <div class="col-sm-4">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="card-img-actions">
+                    <img class="img-responsive" width="250" height="180"
+                       src="@Html.DisplayFor(model => model.Imagen)" alt="@Html.DisplayFor(model => model.Imagen)"  />
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">@Html.DisplayFor(model => model.numero)</h5>
+                  <p class="card-text">@Html.DisplayFor(model => model.descripcion)</p>
+                  <h5 class="card-title">@Html.DisplayFor(model => model.precio)</h5>
+                  <a class="btn btn-dark" asp-action="Seleccionar" asp-route-id="id">Reservar</a>
+                </div>
+              </div>
+            </div>
+    </div>

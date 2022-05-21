@@ -1,0 +1,63 @@
+@model dynamic;
+@using System.Collections.Generic;
+
+@{
+    
+    ViewData["Title"] = "Reserva Online";
+    IEnumerable<hotel_santa_ursula_II.Models.Reservas> listReservas = new List<Reservas>();
+    listReservas = @Model.reservas;
+    Double montoTotal = @Model.montoTotal;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-dark" asp-controller="Pago" 
+        asp-action="Create" asp-route-monto="@montoTotal">Pagar</a><p>Total S/. @montoTotal</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => listReservas.FirstOrDefault().Habitaciones.numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => listReservas.FirstOrDefault().CantHuespedes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => listReservas.FirstOrDefault().DiaEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => listReservas.FirstOrDefault().DiaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => listReservas.FirstOrDefault().Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Reservas item in Model.reservas) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habitaciones.numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantHuespedes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                <a asp-action="Seleccionar" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

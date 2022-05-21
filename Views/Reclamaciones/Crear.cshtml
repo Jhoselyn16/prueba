@@ -1,0 +1,69 @@
+@model hotel_santa_ursula_II.Models.Reclamaciones
+@{
+ 
+}
+<head> 
+   <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>      
+</head>
+
+<body>
+<!--Inicio Banner-->
+<div class="hero-wrap hero-wrap-2" style="background-image: url('../images/banner1.jpg'); background-attachment:fixed; height: 200px;">
+      <div class="overlay" style="height: 200px;" ></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="height: 200px;">
+           <div class="col-md-8 ftco-animate text-center">          
+             <h1 class="mb-3 bread">Sugerencias o Reclamo</h1>
+            </div>
+          </div>
+       </div>
+</div>    
+<br>
+<br>
+<!--Fin Banner-->
+
+<div class="alert alert-success" role="alert">@ViewData["Message"]</div>  
+
+<div class="container formulario">  
+
+    <form asp-controller="Reclamaciones" asp-action="Registrar">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group text-left">
+            <label asp-for="Dni" class="control-label"></label>
+            <input asp-for="Dni" class="form-control rounded-pill">
+            <span asp-validation-for="Dni" class="text-danger"></span>
+        </div><br>
+
+        <div class="form-group text-left">
+            <label asp-for="Nombres" class="control-label"></label>
+            <input asp-for="Nombres" class="form-control rounded-pill">
+            <span asp-validation-for="Nombres" class="text-danger"></span>
+        </div><br>
+        <div class="form-group text-left">
+            <label asp-for="Apellido" class="control-label"></label>
+            <input asp-for="Apellido" class="form-control rounded-pill">
+            <span asp-validation-for="Apellido" class="text-danger"></span>
+        </div><br>
+        <div class="form-group text-left">
+            <label asp-for="N_Celular" class="control-label"></label>
+            <input asp-for="N_Celular" class="form-control rounded-pill">
+            <span asp-validation-for="N_Celular" class="text-danger"></span>
+        </div><br>
+        <div class="form-group text-left">
+            <label asp-for="Correo" class="control-label"></label>
+            <input asp-for="Correo" class="form-control rounded-pill">
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div><br>
+        <div class="form-group text-left">
+            <label asp-for="Reclamo" class="control-label"></label>
+            <textarea asp-for="Reclamo" id="ckeditor" cols="30" rows="10" class="ckeditor" value=""></textarea>
+            <span asp-validation-for="Reclamo" class="text-danger"></span>
+        </div><br>
+
+        <div class="form-group">
+            <button class="button">Enviar</button>
+        </div>
+    </form>
+    </div>
+</body>

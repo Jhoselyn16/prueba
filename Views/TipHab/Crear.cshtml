@@ -1,0 +1,47 @@
+﻿@model hotel_santa_ursula_II.Models.TipoHabitacion
+@{
+    ViewData["Title"] = "Registrar Tipo de habitación";
+}
+<head>  
+   <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>      
+</head>
+
+<body>
+        <!--Inicio Banner-->
+<div class="hero-wrap hero-wrap-2" style="background-image: url('../images/banner1.jpg'); background-attachment:fixed; height: 200px;">
+      <div class="overlay" style="height: 200px;" ></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true" style="height: 200px;">
+           <div class="col-md-8 ftco-animate text-center">          
+             <h1 class="mb-3 bread">Crear tipo de habitación</h1>
+            </div>
+          </div>
+       </div>
+</div>  
+<br>
+<br>
+<!--Fin Banner-->
+<div class="container formulario">
+<div class="text-center">
+    <form asp-controller="TipHab" asp-action="Registrar">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group text-left">
+            <label asp-for="nomtiphabitacion" class="control-label"></label>
+            <input asp-for="nomtiphabitacion" class="form-control rounded-pill">
+            <span asp-validation-for="nomtiphabitacion" class="text-danger"></span>
+        </div><br>
+
+        <div class="form-group text-left">
+            <label asp-for="desctiphab" class="control-label"></label>
+            <input asp-for="desctiphab" class="form-control rounded-pill">
+            <span asp-validation-for="desctiphab" class="text-danger"></span>
+        </div><br>
+
+        <div class="form-group">
+            <button class="button">Crear</button>
+        </div><br>
+    </form>
+</div>
+</div>
+</body>

@@ -1,0 +1,21 @@
+@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<section id="catalogue" class="biografia section-bggg">
+    <div class="container">
+        <div class="section-title">
+            <h2 aling="center " data-aos="fade-in">Confirmacion de Registro</h2>
+        </div>
+        @{
+            if (@Model.DisplayConfirmAccountLink)
+            {
+                <p>
+                    <a id="confirm-link" href="@Model.EmailConfirmationUrl">
+                        <h9> Haga clic aquí para confirmar su cuenta</h9>
+                    </a>
+                </p>
+            }
+        }

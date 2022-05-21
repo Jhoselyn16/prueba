@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if(UserManager.GetUserName(User).Equals("administrador@gmail.com"))//contra Admin12%
+    {
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Inicio</a>
+    </li>
+    <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i>Clientes</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Registrar Cliente</a></li>
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="ListarUsuario">Listar Clientes</a></li>
+        </ul>
+    </li>   
+    /*<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-door-open"></i>Habitaciones</a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+           <li><a class="nav-link text-dark" asp-area="" asp-controller="Habitaciones" asp-action="Index">Registrar Habitación</a></li>                         
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Habitaciones" asp-action="Listar">Listar Habitaciones</a></li>
+           <li><a class="nav-link text-dark" asp-area="" asp-controller="TipHab" asp-action="Index">Tipo de Habitación</a></li>
+           </ul>
+    </li>*/
+    <li><a class="nav-link text-dark" asp-area="" asp-controller="Pago" asp-action="Listar"><i class="fas fa-luggage-cart"></i>Reservas</a>
+    //</li>
+    //<li><a class="nav-link text-dark" asp-area="" asp-controller="Reclamaciones" asp-action="Index"><i class="fas fa-book-open"></i>Sugerencias</a></li> 
+    //<li><a class="nav-link text-dark" asp-area="" asp-controller="Devolucion" asp-action="Listar"><i class="fas fa-book-open"></i>Devoluciones</a></li> 
+}
+else{
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Habitaciones" asp-action="Mostrar"><i class="fas fa-door-open"></i> Habitaciones </a>
+    </li> 
+   /* <!--Usuario: ygm641@gmail.com / Contraseña: Yaraliz123%-->
+   <li class="nav-item dropdown"> 
+      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Inicio</a>
+    </li>
+    <li class="nav-item">
+       <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros"><i class="fas fa-star"></i>Nosotros</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Habitaciones" asp-action="Mostrar"><i class="fas fa-door-open"></i> Habitaciones </a>
+    </li>*/
+    <li><a class="nav-link text-dark" asp-area="" asp-controller="Carrito" asp-action="Index"><i class="fas fa-luggage-cart"></i>Reservas</a>
+    </li>
+    /*<li><a class="nav-link text-dark" asp-area="" asp-controller="Reclamaciones" asp-action="Crear"><i class="fas fa-book-open"></i>Sugerencias</a>
+    </li> 
+    <li class="nav-item">
+       <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacto"><i class="fas fa-star"></i>Contacto</a>
+    </li>
+    
+    <li class="nav-item">
+       <a class="nav-link text-dark" asp-area="" asp-controller="Devolucion" asp-action="index"><i class="fas fa-star"></i>Devolucion</a>
+    </li>
+    */
+}
+}
+else
+{
+    <li class="nav-item dropdown">
+      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Inicio</a>
+    </li>
+    /*<li class="nav-item">
+       <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros"><i class="fas fa-star"></i>Nosotros</a>
+    </li>*/
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Habitaciones" asp-action="Mostrar"><i class="fas fa-door-open"></i> Habitaciones </a>
+    </li> 
+    /*<li class="nav-item">
+       <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacto"><i class="fas fa-star"></i>Contacto</a>
+    </li>*/
+
+}

@@ -1,0 +1,77 @@
+@model IEnumerable<hotel_santa_ursula_II.Models.Detallepedido>
+@{
+    Layout = "~/Views/Shared/_Impresion.cshtml";
+    IEnumerable<hotel_santa_ursula_II.Models.Detallepedido> listProformas = new List<Detallepedido>();
+    int total1=0;
+    int totalf=0;
+    string usuario="";
+    DateTime fecha= new DateTime();
+}
+
+<head>  
+   <script src="https://kit.fontawesome.com/c239d89a06.js" crossorigin="anonymous"></script>      
+</head>
+
+<body>
+
+<!--Fin Banner-->
+ @foreach (var item in Model){
+    usuario=item.pedido.UserID;
+    totalf=item.pedido.pago.MontoTotal;
+ }
+ <h5> @usuario</h5>
+ <h5> @fecha</h5>
+ <h5> @totalf</h5>
+<div class="container">
+    <table class="table table-hover">
+    <thead class="thead-dark">
+             <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Habitaciones.numero)
+                </th>
+               
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th scope="col">
+                    Precio total
+                </th>
+                
+        </tr>
+    </thead>
+    
+	@foreach (var item in Model)
+	{
+        total1=item.Precio * item.Cantidad;
+        //@if (item.Email == @User.Identity.Name)
+        //{
+            <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Habitaciones.numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            
+            <td>
+                 @total1
+            </td>
+            
+            </tr>            
+	}
+    </tbody>    
+</table>
+
+
+
+
+      
+</body>
+    
